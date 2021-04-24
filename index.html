@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Static Website</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+           <h1>MySite</h1>
+           <h3>This is the site Caption</h3>
+           <hr>
+           <h3>Our Vision</h3>
+           <p>
+               this is text. this is text.this is text. this is text.
+               this is text. this is text.
+               this is text. this is text.
+               this is text. this is text.
+               this is text. this is text.this is text. this is text.this is text. this is text.this is text. this is text.
+               this is text. this is text.this is text. this is text.
+               this is text. this is text.this is text. this is text.this is text. this is text.
+           </p>
+           <hr>
+           <h4>Key People</h4>
+           <div id="keypeople">
+
+            </div>
+    </body>
+    <script>
+          fetch("http://52.188.159.25:8885/api/KeyPeople").then(
+              (res)=>res.json().then(
+                  (result)=>{
+                      code=""
+                    for(let x of result){
+                        code+="<div class='box'>"
+                        code+="<img src='http://168.62.161.242/"+x.photo+"'><br>"
+                        code+="<h4>"+x.name+"</h4>"
+                        code+="<h5>"+x.role+"</h5>"
+                        code+="</div>"
+                    }  
+                    document.getElementById("keypeople").innerHTML=code;
+                }
+              )
+          )
+    </script>
+</html>
